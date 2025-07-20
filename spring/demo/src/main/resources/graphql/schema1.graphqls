@@ -1,0 +1,32 @@
+#scalar Date
+#publishedDate: Date
+
+#must extend type query or Mutation
+
+# Mutation operations that accept complex input (like an entire Book object), you must use an input type 
+
+
+type Book{
+    id: ID!
+    title: String!
+    description: String
+    pages: Int
+    price: Float
+}
+
+extend type Query{
+    getByIdBook(id: ID!): Book
+    allBooks: [Book]
+}
+
+extend type Mutation{
+    createbook(book: BookInput): Book
+}
+
+input BookInput{
+    title: String!
+    description: String
+    pages: Int
+    price: Float
+
+}
