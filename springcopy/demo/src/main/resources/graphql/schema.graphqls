@@ -1,0 +1,30 @@
+type Users{
+    user_id: ID!
+    name: String
+    email: String
+    phone: String
+    order: [Orders]
+}
+
+type Orders{
+    orderId: ID!
+    orderDetails: String
+    price: Float
+    users: Users
+
+}
+type Query{
+    getUser(userId: ID!): Users
+    getAllusers: [Users]
+    getALlorders: [Orders]
+    getOrder(orderId: ID!): Orders
+}
+
+type Mutation{
+    createUser(name: String, email: String, phone: String): Users
+    deleteUser(userId: ID!): Boolean
+
+    createOrder(orderDetails: String, price: Float, userId: Int): Orders
+    deleteOrder(orderId: ID!): Boolean
+
+}
